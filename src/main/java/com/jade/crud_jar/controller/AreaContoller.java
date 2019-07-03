@@ -3,6 +3,7 @@ package com.jade.crud_jar.controller;
 /**
  * @author mperez
  */
+import com.jade.crud_jar.model.CtArea;
 import com.jade.crud_jar.repository.AreaRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class AreaContoller {
     private AreaRepository areaRep;
 
     @GetMapping("/getAreas")
-    public List<Areas> getAllAreas() {
+    public List<CtArea> getAllAreas() {
         return areaRep.findAll();
     }
 }
