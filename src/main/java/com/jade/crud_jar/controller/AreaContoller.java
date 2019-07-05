@@ -3,22 +3,28 @@ package com.jade.crud_jar.controller;
 /**
  * @author mperez
  */
-import com.jade.crud_jar.model.CtArea;
-import com.jade.crud_jar.repository.AreaRepository;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://www.appjade.com:4200", methods= {RequestMethod.GET,RequestMethod.POST})
+@RequestMapping("/Usuarios")
 public class AreaContoller {
-    @Autowired
-    private AreaRepository areaRep;
-
-    @GetMapping("/getAreas")
-    public List<CtArea> getAllAreas() {
-        return areaRep.findAll();
+    @GetMapping
+    public List<Object> index() {
+        List<Object> person = getDetails();
+        return person;
+    }
+    
+    public static List<Object> getDetails() 
+    { 
+        String name = "Geek"; 
+        int age = 35; 
+        char gender = 'M'; 
+  
+        return Arrays.asList(name, age, gender); 
     }
 }

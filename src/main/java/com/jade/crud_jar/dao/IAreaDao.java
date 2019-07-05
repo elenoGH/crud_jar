@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jade.crud_jar.repository;
+package com.jade.crud_jar.dao;
+
+import com.jade.crud_jar.model.CtArea;
+import com.jade.crud_jar.repository.DaoRepository;
+
 
 /**
+ *
  * @author mperez
  */
-//aqui se hacen las consultas query hibernate
-public interface AreaRepository {
+public interface IAreaDao extends DaoRepository<CtArea, Long>{
     
 }

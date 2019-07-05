@@ -5,17 +5,9 @@
  */
 package com.jade.crud_jar.model;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -23,25 +15,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "CT_AREA")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CtArea.findAll", query = "SELECT c FROM CtArea c")
-    , @NamedQuery(name = "CtArea.findByLIdArea", query = "SELECT c FROM CtArea c WHERE c.lIdArea = :lIdArea")
-    , @NamedQuery(name = "CtArea.findByNombreArea", query = "SELECT c FROM CtArea c WHERE c.nombreArea = :nombreArea")
-    , @NamedQuery(name = "CtArea.findByDescripcion", query = "SELECT c FROM CtArea c WHERE c.descripcion = :descripcion")})
-public class CtArea implements Serializable {
+public class CtArea {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "L_IdArea")
+    //@Basic(optional = false)
+    //@NotNull
+    //@Column(name = "L_IdArea")
     private Integer lIdArea;
-    @Size(max = 200)
-    @Column(name = "Nombre_Area")
+    //@Size(max = 200)
+    //@Column(name = "Nombre_Area")
     private String nombreArea;
-    @Size(max = 350)
-    @Column(name = "Descripcion")
+    //@Size(max = 350)
+    //@Column(name = "Descripcion")
     private String descripcion;
 
     public CtArea() {
@@ -49,6 +35,10 @@ public class CtArea implements Serializable {
 
     public CtArea(Integer lIdArea) {
         this.lIdArea = lIdArea;
+    }
+
+    public CtArea(String john, String johndomaincom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getLIdArea() {
