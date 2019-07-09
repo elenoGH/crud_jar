@@ -5,9 +5,19 @@
  */
 package com.jade.crud_jar.model;
 
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -15,38 +25,41 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CT_AREA")
-public class CtArea {
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "CtArea.findAll", query = "SELECT c FROM CtArea c")
+    , @NamedQuery(name = "CtArea.findByIdarea", query = "SELECT c FROM CtArea c WHERE c.idarea = :idarea")
+    , @NamedQuery(name = "CtArea.findByNombreArea", query = "SELECT c FROM CtArea c WHERE c.nombreArea = :nombreArea")
+    , @NamedQuery(name = "CtArea.findByDescripcion", query = "SELECT c FROM CtArea c WHERE c.descripcion = :descripcion")})
+public class CtArea implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    //@Basic(optional = false)
-    //@NotNull
-    //@Column(name = "L_IdArea")
-    private Integer lIdArea;
-    //@Size(max = 200)
-    //@Column(name = "Nombre_Area")
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idarea")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idarea;
+    @Size(max = 200)
+    @Column(name = "Nombre_Area")
     private String nombreArea;
-    //@Size(max = 350)
-    //@Column(name = "Descripcion")
+    @Size(max = 350)
+    @Column(name = "Descripcion")
     private String descripcion;
 
     public CtArea() {
     }
 
-    public CtArea(Integer lIdArea) {
-        this.lIdArea = lIdArea;
+    public CtArea(int idarea) {
+        this.idarea = idarea;
     }
 
-    public CtArea(String john, String johndomaincom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getIdarea() {
+        return idarea;
     }
 
-    public Integer getLIdArea() {
-        return lIdArea;
-    }
-
-    public void setLIdArea(Integer lIdArea) {
-        this.lIdArea = lIdArea;
+    public void setIdarea(int idarea) {
+        this.idarea = idarea;
     }
 
     public String getNombreArea() {
@@ -66,28 +79,8 @@ public class CtArea {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (lIdArea != null ? lIdArea.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CtArea)) {
-            return false;
-        }
-        CtArea other = (CtArea) object;
-        if ((this.lIdArea == null && other.lIdArea != null) || (this.lIdArea != null && !this.lIdArea.equals(other.lIdArea))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "com.jade.crud_jar.model.CtArea[ lIdArea=" + lIdArea + " ]";
+        return "mx.com.AEF.CtArea[ idarea=" + idarea + " ]";
     }
     
 }
